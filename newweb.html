@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Yes/No Buttons</title>
+<style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#yesButton {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#noButton {
+  background-color: #f44336;
+  color: white;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+#videoContainer {
+  display: none;
+  margin-top: 20px;
+  text-align: center; /* Center the GIF */
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1> Do you want to be my valentine date babe?</h1>
+  <button id="yesButton">Yes</button>
+  <button id="noButton">No</button>
+  <div id="result"></div>
+  <div id="videoContainer">
+    <iframe src="https://tenor.com/embed/16967367" width="350" height="350" frameborder="0" class="tenor-gif-embed"></iframe>
+    <p>kantutan kantutan</p> </div>
+</div>
+
+<script>
+const yesButton = document.getElementById("yesButton");
+const noButton = document.getElementById("noButton");
+const resultDiv = document.getElementById("result");
+const videoContainer = document.getElementById("videoContainer");
+
+let yesButtonSize = 1;
+let noButtonClickCount = 0;
+
+noButton.addEventListener("click", function() {
+  noButtonClickCount++;
+
+  if (noButtonClickCount <= 10) {
+    yesButtonSize += 0.9;
+    yesButton.style.transform = `scale(${yesButtonSize})`;
+  } else if (noButtonClickCount === 11) {
+    yesButton.style.width = "100%";
+    yesButton.style.transform = "scale(1)";
+    yesButton.textContent = "Fully Extended!";
+    yesButton.style.backgroundColor = "blue";
+  } else {
+    resultDiv.textContent = "Fully Extended!";
+  }
+});
+
+yesButton.addEventListener("click", function() {
+  resultDiv.textContent = "You clicked Yes!";
+  videoContainer.style.display = "block";
+});
+
+</script>
+
+</body>
+</html>
